@@ -20,4 +20,4 @@ mybatis-plus:
       id-type: ASSIGN_ID
 
 reggie:
-  path: D:\Project\SpringBoot\reggie_take_out\File\
+  path: D:\Project\SpringBoot\reggie_take_out\src\main\resources\File\
