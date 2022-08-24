@@ -1,8 +1,8 @@
 package com.yahaha.reggie.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yahaha.reggie.entity.Setmeal;
-import com.yahaha.reggie.mapper.SetmealMapper;
+import com.yahaha.reggie.entity.SetmealDish;
+import com.yahaha.reggie.mapper.SetmealDishMapper;
 import com.yahaha.reggie.service.SetmealDishService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,5 +14,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class SetmealDishServiceImpl extends ServiceImpl<SetmealMapper, Setmeal> implements SetmealDishService {
+public class SetmealDishServiceImpl extends ServiceImpl<SetmealDishMapper,SetmealDish> implements SetmealDishService {
 }

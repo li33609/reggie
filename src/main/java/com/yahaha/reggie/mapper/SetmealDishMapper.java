@@ -2,6 +2,7 @@ package com.yahaha.reggie.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yahaha.reggie.entity.Setmeal;
+import com.yahaha.reggie.entity.SetmealDish;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,5 +11,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @description
  */
 @Mapper
-public interface SetmealDishMapper extends BaseMapper<Setmeal> {
+public interface SetmealDishMapper extends BaseMapper<SetmealDish> {
 }
