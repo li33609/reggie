@@ -76,4 +76,21 @@ public class SetmealServiceImpl extends ServiceImpl<SetmealMapper,Setmeal> imple
         // 删除关系表中的数据--setmeal_dish
         setmealDishService.remove(lambdaQueryWrapper);
     }
+
+    /**
+     * 更新套餐信息
+     * @param setmealDto
+     * @return
+     */
+    public void updateSetmeal(SetmealDto setmealDto) {
+        // 将套餐信息保存
+        saveOrUpdate(setmealDto);
+        // 将套餐含有菜品信息保存
+        List<SetmealDish> setmealDishes = setmealDto.getSetmealDishes();
+        setmealDishes = setmealDishes.stream().map(item->{
+            item.setSetmealId(setmealDto.getId());
+            return item;
+        }).collect(Collectors.toList());
+        setmealDishService.saveOrUpdateBatch(setmealDishes);
+    }
 }

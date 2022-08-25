@@ -128,4 +128,40 @@ public class SetmealController {
 
         return R.success(list);
     }
+
+    /**
+     * 修改销售状态
+     * @param status
+     * @param ids
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    public R changeStatus(@PathVariable int status,String ids){
+        String[] idList = ids.split(",");
+        for (String id : idList) {
+            Setmeal setmeal = new Setmeal();
+            setmeal.setId(Long.parseLong(id));
+            setmeal.setStatus(status);
+
+            setmealService.updateById(setmeal);
+        }
+        return R.success("更新状态成功");
+    }
+
+    /**
+     * 更新套餐信息
+     * @param setmealDto
+     * @return
+     */
+    @PutMapping
+    public R updateSetmeal(@RequestBody SetmealDto setmealDto){
+        setmealService.updateSetmeal(setmealDto);
+        return R.success("更新套餐成功!");
+    }
+
+    @GetMapping("/dish/{id}")
+    public R getSetMeal(@PathVariable Long id){
+        Setmeal setmeal = setmealService.getById(id);
+        return R.success(setmeal);
+    }
 }
