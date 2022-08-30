@@ -4,6 +4,7 @@ import com.yahaha.reggie.entity.OrderDetail;
 import com.yahaha.reggie.entity.Orders;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * @description
  */
 @Data
-public class OrdersDto extends Orders {
+public class OrdersDto extends Orders implements Serializable {
 
     private List<OrderDetail> orderDetails;
 }
