@@ -47,4 +47,20 @@ public class OrdersController {
         Page<OrdersDto> ordersDtoPage = ordersService.userPage(page,pageSize);
         return R.success(ordersDtoPage);
     }
+
+    /**
+     * 管理员查看订单信息
+     * @param page
+     * @param pageSize
+     * @param number
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    @GetMapping("/page")
+    public R<Page> page(int page, int pageSize, String number,String beginTime,String endTime){
+
+        Page pageInfo = new Page<>(page,pageSize);
+        return ordersService.pageQuery(pageInfo,number,beginTime,endTime);
+    }
 }

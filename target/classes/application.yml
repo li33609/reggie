@@ -10,6 +10,11 @@ spring:
       url: jdbc:mysql://localhost:3306/reggie?characterEncoding=utf-8
       username: root
       password: 123456
+  redis:
+    host: 192.168.152.129
+    port: 6379
+    database: 0
+
 mybatis-plus:
   configuration:
     #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
@@ -18,6 +23,5 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: ASSIGN_ID
-
 reggie:
   path: D:\Project\SpringBoot\reggie_take_out\src\main\resources\File\

@@ -6,10 +6,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yahaha.reggie.common.BaseContext;
 import com.yahaha.reggie.common.CustomException;
+import com.yahaha.reggie.common.R;
 import com.yahaha.reggie.dto.OrdersDto;
 import com.yahaha.reggie.entity.*;
 import com.yahaha.reggie.mapper.OrdersMapper;
 import com.yahaha.reggie.service.*;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -148,5 +150,22 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         BeanUtils.copyProperties(orders, ordersDtoPage);
         ordersDtoPage.setRecords(records);
         return ordersDtoPage;
+    }
+
+    /**
+     * 管理员查看订单信息
+     * @param pageInfo
+     * @param number
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    @Override
+    public R<Page> pageQuery(Page pageInfo, String number, String beginTime, String endTime) {
+        Page<OrdersDto> ordersDtoPage = new Page<>();
+        LambdaQueryWrapper<Orders> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(StringUtils.isNotEmpty(number),Orders::getNumber,number);
+
+        return R.success(ordersDtoPage);
     }
 }
